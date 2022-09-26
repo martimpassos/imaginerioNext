@@ -203,6 +203,12 @@ const AtlasController = ({ width, height, mobile }) => {
         }}
         showSatellite={year === new Date().getFullYear()}
         maxZoom={18}
+        maxBounds={[
+          [!Number.isNaN(parseFloat(router.query.west)) ? +router.query.west : -44.030211,
+           !Number.isNaN(parseFloat(router.query.south)) ? +router.query.south : -23.114774],        
+          [!Number.isNaN(parseFloat(router.query.east)) ? +router.query.east : -42.696978,
+           !Number.isNaN(parseFloat(router.query.north)) ? +router.query.north : -22.491304]
+        ]}
         hoverHandler={e => {
           if (e.features.length && !mobile) {
             setProbePosition(e.center);
